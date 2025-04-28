@@ -1,0 +1,245 @@
+---
+import { Image } from 'astro:assets';
+import { Icon } from 'astro-icon/components';
+import Layout from '../layouts/Layout.astro';
+import NavBar from '../components/Navbar.astro'
+import AudiRSGT from '../assets/audi-rs-gt.webp'
+import PortadaExperiencias from '/src/assets/portada-experiencias.webp'
+import PortadaExperienciasDesktop from '/src/assets/portada-experiencias-desktop.webp'
+import AudiExperiencia from '/src/assets/audi-experiencia.webp'
+import ResponsiveHeroVideo from '../components/ResponsiveHeroVideo.astro';
+
+import { CarModelSelector } from '../components/CarModelSelector';
+import { NewsCarousel } from '../components/NewsCarousel'
+
+
+---
+<Layout 
+	pageTitle='| Nuevos Modelos' 
+	pageDescription='Bienvenido a Audi Perú donde encontrarás todos los modelos disponibles'>
+
+	<header>
+		<NavBar /> 
+	</header>
+
+	<main>
+		<ResponsiveHeroVideo />
+
+		<div class="px-6 w-[90%] max-w-[1500px] mx-auto space-y-8">
+			<section class="audi-section mt-10">
+
+				<h1 class="inline-block pb-10 font-bold text-2xl uppercase bg-gradient-to-l bg-clip-text tracking-wide text-transparent to-[#1C1C1C] from-[#828282] sm:text-[32px]">
+					Explora nuestros modelos
+				</h1>
+
+				<div class="mx-auto max-w-[1200px]">
+					<CarModelSelector client:visible />
+				</div>
+			</section>
+	
+			<section class="audi-section">
+				<h1 class="inline-block pb-10 font-bold text-2xl uppercase bg-gradient-to-l bg-clip-text tracking-wide text-transparent to-[#1C1C1C] from-[#828282] sm:text-[32px]">
+					Descubre el nuevo Audi RS e-tron GT
+				</h1>
+	
+				<figure class="mt-4 lg:grid lg:grid-cols-2 lg:gap-x-2">
+					<Image 
+						src={ AudiRSGT }
+						widths={[ 240, 540, AudiRSGT.width ]}
+						sizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 1024px) ${ AudiRSGT.width }px`}
+						class="lg:grow" 
+						alt="Audi RS e-tron GT"
+					/>
+
+					<p class="mt-6 p-3 text-sm sm:text-lg">
+						El Audi RS e-tron GT es un vehículo eléctrico de altas prestaciones, que combina la deportividad de la gama RS con la tecnología de la plataforma e-tron. Se caracteriza por su potente motor eléctrico, tracción total quattro, y un diseño elegante y aerodinámico.
+					</p>
+				</figure>
+				
+				
+				<dl class="grid grid-cols-3 px-4 py-6 gap-x-2 text-center md:mt-10 lg:grid-cols-4">
+					<div class="grid place-content-center">
+						<dt class="text-xl font-light sm:text-2xl md:text-3xl">3.3 s¹</dt>
+						<dd class="text-xs font-semibold md:text-sm">0–100 km/h</dd>
+					</div>
+					<div class="grid place-content-center">
+						<dt class="text-xl font-light sm:text-2xl md:text-3xl">204 PS</dt>
+						<dd class="text-xs font-semibold md:text-sm">Power</dd>
+					</div>
+					<div class="grid place-content-center">
+						<dt class="text-xl font-light sm:text-2xl md:text-3xl">472 KM</dt>
+						<dd class="text-xs font-semibold md:text-sm">(WLTP)</dd>
+					</div>
+					<div class="col-span-3 mt-10 lg:col-span-1 lg:mt-0">
+						<a class="w-full flex py-8 justify-center items-center gap-x-4 bg-black text-white uppercase">
+							Más sobre el auto 
+							<Icon name="arrow-right" size={ 30 } />
+						</a>
+					</div>
+				</dl>
+			</section>
+	
+			<section class="last:pb-10">
+				<figure class="relative">
+						<Image class="md:hidden" src={ PortadaExperiencias } alt="Portada Experiencias" />
+						<Image class="hidden md:block" src={ PortadaExperienciasDesktop } alt="Portada Experiencias" />
+				</figure>
+
+				<h1 class="mt-5 py-10 w-fit mx-auto font-bold text-2xl uppercase bg-gradient-to-l bg-clip-text tracking-wide text-transparent to-[#1C1C1C] from-[#828282] sm:text-[32px]">
+					Una nueva experiencia cada semana
+				</h1>
+	
+				<ul class="audi-section  mt-10 space-y-8 md:grid md:grid-cols-2 md:gap-7">
+					<li class="">
+						<figure class="relative">
+							<div class="overflow-hidden group" >
+								<Image 
+									class="transition-transform duration-500 ease-out group-hover:scale-110"
+									src={ AudiExperiencia }
+									widths={[ 240, 540, 720, AudiExperiencia.width ]} 
+									sizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 1024px) 720px, ${AudiExperiencia.width}px`} 
+									alt="Audi referencia" 
+								/>
+							</div>
+							<figcaption class="bg-black/50 text-white absolute bottom-0 left-0 p-1.5 py-3 text-sm w-full text-center md:p-3 lg:text-lg md:py-6">Rendimiento del Audi RS Q8 en España</figcaption>
+						</figure>
+						<div>
+							<p class="px-2 py-5 sm:text-center tablet:text-start">
+								Revive una de las mayores experiencias en Audi Experience Chile que combina la deportividad de la gama RS con la tecnología de la plataforma e-tron.
+							</p>
+							<a class="w-40 flex gap-x-2 justify-center items-center p-4 group hover:bg-black border transition duration-500 border-black mt-2 ml-2">
+								<Icon class="group-hover:text-white" name="arrow-right" size={ 30 }/>
+								<span class="group-hover:text-white">Leer más</span>
+							</a>
+						</div>
+					</li>
+					<li class="">
+						<figure class="relative">
+							<div class="overflow-hidden group" >
+								<Image 
+									class="transition-transform duration-500 ease-out group-hover:scale-110"
+									src={ AudiExperiencia }
+									widths={[ 240, 540, 720, AudiExperiencia.width ]} 
+									sizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 1024px) 720px, ${AudiExperiencia.width}px`} 
+									alt="Audi referencia" 
+								/>
+							</div>
+							<figcaption class="bg-black/50 text-white absolute bottom-0 left-0 p-1.5 py-3 text-sm w-full text-center md:p-3 lg:text-lg md:py-6">Rendimiento del Audi RS Q8 en España</figcaption>
+						</figure>
+						<div>
+							<p class="px-2 py-5 sm:text-center tablet:text-start">
+								Revive una de las mayores experiencias en Audi Experience Chile que combina la deportividad de la gama RS con la tecnología de la plataforma e-tron.
+							</p>
+							<a class="w-40 flex gap-x-2 justify-center items-center p-4 group hover:bg-black border transition duration-500 border-black mt-2 ml-2">
+								<Icon class="group-hover:text-white" name="arrow-right" size={ 30 }/>
+								<span class="group-hover:text-white">Leer más</span>
+							</a>
+						</div>
+					</li>
+					<li class="">
+						<figure class="relative">
+							<div class="overflow-hidden group" >
+								<Image 
+								class="transition-transform duration-500 ease-out group-hover:scale-110"
+								src={ AudiExperiencia }
+								widths={[ 240, 540, 720, AudiExperiencia.width ]} 
+								sizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 1024px) 720px, ${AudiExperiencia.width}px`} 
+								alt="Audi referencia" 
+							/>
+							</div>
+							<figcaption class="bg-black/50 text-white absolute bottom-0 left-0 p-1.5 py-3 text-sm w-full text-center md:p-3 lg:text-lg md:py-6">Rendimiento del Audi RS Q8 en España</figcaption>
+						</figure>
+						<div>
+							<p class="px-2 py-5 sm:text-center tablet:text-start">
+								Revive una de las mayores experiencias en Audi Experience Chile que combina la deportividad de la gama RS con la tecnología de la plataforma e-tron.
+							</p>
+							<a class="w-40 flex gap-x-2 justify-center items-center p-4 group hover:bg-black border transition duration-500 border-black mt-2 ml-2">
+								<Icon class="group-hover:text-white" name="arrow-right" size={ 30 }/>
+								<span class="group-hover:text-white">Leer más</span>
+							</a>
+						</div>
+					</li>
+				</ul>
+	
+				<a class="py-10 text-center underline flex justify-center gap-x-1 items-center" href="">Ver todas las experiencias <Icon name="arrow-right" size={ 20 } /></a>
+			</section>
+	
+			<section class="audi-section">
+				<h1 class="inline-block pb-10 font-bold text-2xl uppercase bg-gradient-to-l bg-clip-text tracking-wide text-transparent to-[#1C1C1C] from-[#828282] sm:text-[32px]">
+					Últimas noticias
+				</h1>
+	
+				<NewsCarousel client:visible >
+					<Icon class="group-hover:text-white" name="arrow-right" size={ 30 }/>
+				</NewsCarousel>
+	
+			</section>
+		</div>
+	</main>
+
+	<footer class="mt-20 bg-black text-white p-10">
+		<div class="w-[90%] max-w-[1500px] mx-auto space-y-7">
+			<section class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+				<div>
+					<h1 class="font-bold uppercase text-xl">Modelos</h1>
+					<ul class="px-2 pt-5 font-light text-[#AC9F9F] text-sm space-y-3">
+						<li>Todos los modelos</li>
+						<li>Sedán</li>
+						<li>Coupé</li>
+						<li>SUV</li>
+						<li>Hatchback</li>
+						<li>Familia R/RS</li>
+					</ul>
+				</div>
+		
+				<div>
+					<h1 class="font-bold uppercase text-xl">Servicio al cliente</h1>
+					<ul class="px-2 pt-5 font-light text-[#AC9F9F] text-sm space-y-3">
+						<li>Concesionarios</li>
+						<li>Libro de reclamaciones</li>
+						<li>Agenda tu cita de servicio</li>
+						<li>Tienda de repuestos</li>
+					</ul>
+				</div>
+		
+				<div>
+					<h1 class="font-bold uppercase text-xl">Experiencia Audi</h1>
+					<ul class="px-2 pt-5 font-light text-[#AC9F9F] text-sm space-y-3">
+						<li>Historia</li>
+						<li>Noticias</li>
+						<li>Blog</li>
+					</ul>
+				</div>
+		
+				<div>
+					<h1 class="font-bold uppercase text-xl">Audi Social</h1>
+					<ul class="px-2 pt-5 font-light text-[#AC9F9F] text-sm flex items-center gap-x-1">
+						<li><Icon name="instagram" size={ 30 }/></li>
+						<li><Icon name="facebook" size={ 30 }/></li>
+						<li><Icon name="twitter" size={ 24 }/></li>
+						<li><Icon name="tiktok" size={ 30 }/></li>
+					</ul>
+				</div>
+			</section>
+	
+			<hr class="text-[#AC9F9F]">
+	
+			<p class="font-light text-[14px]">
+				© 2025 Dr. Ing. h.c. F. Audi AG. Legal Notice. Privacy Policy. Cookie Policy. Consumption/Emissions. Open Source Software Notice. Whistleblower System.
+				* If the values are given as ranges, these do not relate to a single, individual vehicle and do not constitute part of the offer. They are intended solely as a means of comparing different vehicle models and refer to the product portfolio that is available on the German market. Extra features and accessories (attachments, tyre formats etc.) can change relevant vehicle parameters such as weight, rolling resistance and aerodynamics and, in addition to weather and traffic conditions, as well as individual handling, can affect the fuel consumption, energy consumption, CO₂ emissions, range and performance values of a car.
+				** Important information about the all-electric Audi models can be found here.
+			</p>
+	
+			<Icon class="m-auto" name="logo-audi" size={ 100 }/>
+		</div>
+	</footer>
+
+<script>
+
+		import ScrollReveal from 'scrollreveal'
+
+		ScrollReveal().reveal('.audi-section', { reset: true, easing: 'ease-in', distance: '100px', origin: 'left' });
+
+</script>
+</Layout>
+

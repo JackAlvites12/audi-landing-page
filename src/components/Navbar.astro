@@ -1,0 +1,101 @@
+---
+import { Icon } from 'astro-icon/components'
+import { menuItems, defaultMenuItems } from '../data/menu-items'
+
+---
+<!-- absolute... h-[200px] -->
+<nav class="absolute px-2 top-0 w-full z-10 h-[350px]"> 
+  <div class="flex justify-between items-center">
+
+      <a href="/">
+        <Icon name="logo-audi" size={ 80 } />
+      </a>
+
+      <div class="drawer drawer-end w-10 lg:hidden">
+          <input id="my-drawer" type="checkbox" class="drawer-toggle" />
+          <label class="swap swap-rotate z-10" for="my-drawer">
+              <!-- menu icon -->
+              <Icon class="swap-off [:checked~*_&]:!-rotate-45 [:checked~*_&]:!opacity-0" name="menu" size={ 40 } />
+              <!-- close icon -->
+              <Icon class="swap-on [:checked~*_&]:!rotate-0 [:checked~*_&]:!opacity-100" name="close-menu" size={ 40 }/>
+          </label>
+          
+          <div class="drawer-side">
+            <label for="my-drawer" aria-label="close sidebar" class="drawer-overlay"></label>
+            <aside class="flex flex-col pt-20 min-h-full w-80  bg-white tracking-wide font-light">
+              <ul class="p-4 uppercase grow">
+                {
+                  menuItems.map(({ name, subItems }) => (
+
+                    subItems ? (
+                      <li>
+                        <div class="collapse collapse-arrow">
+                          <input type="radio" name="my-accordion-2" />
+                          <div class="collapse-title">{ name }</div>
+                          <div class="collapse-content">
+                            <ul class="space-y-3 px-4 py-2">
+                              {
+                                subItems.map( item => (
+                                  <li>{ item }</li>
+                                ))
+                              }
+                            </ul>
+                          </div>
+                        </div>
+                      </li>
+                    ) 
+                    : 
+                    (
+                      <li class="p-4">
+                        <a href="#">{ name }</a>
+                      </li>
+                    )
+                  ))
+                }
+              </ul>
+
+            <!-- Aqui opciones por defecto que se encuentran en el footer -->
+              <ul class="mt-4 pt-10 bg-base-300 p-4 capitalize *:p-4 min-h-full grow">
+                {
+                  defaultMenuItems.map( item => (
+                    <li>{ item }</li>
+                  ))
+                }
+              </ul>
+            </aside>
+          </div>
+      </div>
+
+      <ul class="hidden gap-x-2 text-white uppercase lg:flex lg:justify-evenly">
+        {
+          menuItems.map(({ name, subItems  }) => (
+
+            subItems ? (
+                  <li class="group relative ">
+                    <div class="flex items-center">
+                      <a href="#" class="block px-4 py-2">{ name }</a>
+                      <Icon class="block group-hover:hidden" name="arrow-bottom" size={ 20 } />
+                      <Icon class="hidden group-hover:block" name="arrow-top" size={ 20 } />
+                    </div>
+
+                    <ul class="p-8 pointer-events-none group-hover:pointer-events-auto opacity-0 group group-hover:opacity-100 transition-opacity duration-300 flex ease-in-out flex-col gap-y-3 absolute top-10  text-black bg-white capitalize text-base">
+                      {
+                          subItems.map(item => (
+                            <li>
+                              <a href="#" class="">{ item }</a>
+                            </li>
+                          ))
+                        }
+                    </ul>
+
+                  </li>
+                ) : (
+                  <li class="">
+                    <a href="#" class="block px-4 py-2">{ name }</a>
+                  </li>
+                )
+          ))
+        }
+      </ul>
+  </div>
+</nav>

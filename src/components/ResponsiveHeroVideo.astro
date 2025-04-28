@@ -1,0 +1,24 @@
+<div class="relative min-h-screen">
+  <video id="hero-video" class="absolute top-0 left-0 object-cover size-full pointer-events-none" autoplay muted playsinline loop></video>
+</div>
+
+<script>
+  const video = document.getElementById('hero-video') as any
+
+  function updateVideoSource() {
+    const isDesktop = window.innerWidth >= 1024
+    const newSrc = isDesktop
+      // ? 'https://res.cloudinary.com/curso-react-jmam/video/upload/v1745848923/qhxm8zpvbiy1vqtbrrpy.webm'
+      ? '/videos/audi-a6-sedan-trailer-studio.webm'
+      // : 'https://res.cloudinary.com/curso-react-jmam/video/upload/v1745849005/izwaxtkxlpato6yptuie.webm'
+      : '/videos/audi-a6-sedan-trailer-studio-vertical.webm'
+
+    if (video.src !== location.origin + newSrc) {
+      video.src = newSrc
+      video.load()
+    }
+  }
+
+  window.addEventListener('resize', updateVideoSource)
+  window.addEventListener('DOMContentLoaded', updateVideoSource)
+</script>

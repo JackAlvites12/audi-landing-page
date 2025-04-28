@@ -1,0 +1,27 @@
+---
+import LoaderScreen from '../components/LoaderScreen.astro';
+import '../styles/global.css' 
+
+
+
+interface Props {
+	pageTitle: string,
+	pageDescription: string
+}
+
+const { pageTitle, pageDescription } = Astro.props
+---
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="description" content={ pageDescription }>
+		<link rel="icon" type="image/svg+xml" href="/audi-icon.svg" />
+		<title>Audi Perú { pageTitle }</title>
+	</head>
+	<body class="select-none font-poppins">
+		<LoaderScreen   />
+		<slot />
+	</body>
+</html>
