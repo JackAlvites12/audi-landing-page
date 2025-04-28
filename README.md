@@ -6,7 +6,7 @@ Esta landing page es una **propuesta de rediseño para la marca Audi**, desarrol
 
 ![Audi Landing Page](https://res.cloudinary.com/curso-react-jmam/image/upload/v1745859777/ob9lwtg2jx362qezfqhf.png)
 
-[Ver vista previa del sitio web]()
+[Ver vista previa del sitio web](https://audi-landing-page-six.vercel.app/)
 
 
 ## 🚀 Tecnologías utilizadas
